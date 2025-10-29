@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solutions acoustiques pour l'habitat - Bruits aériens, solidiens et extérieurs">
+    <title>Acoustique Habitat | Solutions Techniques</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8a6d3b;
+            --accent-color: #a8c6b8;
+            --light-color: #f8f9f7;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+            padding-top: 80px;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .btn:hover {
+            background-color: #6b5630;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo-subtitle {
+            display: block;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--secondary-color);
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin-left: 40px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* STYLES PROJET */
+        .project-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/faux_plafond_acoustique.webp') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: -80px;
+            padding-top: 80px;
+        }
+        
+        .project-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .project-hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .project-info {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .detail-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .detail-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .detail-item h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .project-description {
+            padding: 100px 0;
+        }
+        
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .project-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        .project-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .features-list {
+            margin: 30px 0;
+        }
+        
+        .features-list h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .project-gallery {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            background: #f8f9fa;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-caption p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .project-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+            color: white;
+        }
+        
+        .project-cta h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        /* Styles spécifiques pour le contenu acoustique */
+        .acoustique-content {
+            padding: 80px 0;
+        }
+
+        .acoustique-section {
+            margin-bottom: 60px;
+        }
+
+        .acoustique-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .acoustique-section h3 {
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+
+        .solution-technique {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 20px 0;
+        }
+
+        .solution-technique h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .schema {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .schema img {
+            max-width: 100%;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .regulation-info {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .conclusion {
+            background: #f0f7e8;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            font-style: italic;
+            text-align: center;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+                line-height: 1.2;
+            }
+            
+            .logo-subtitle {
+                font-size: 0.65rem;
+                margin-top: 2px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 20px 0;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu a.btn-outline {
+                border: 2px solid var(--secondary-color);
+                text-align: center;
+                padding: 12px;
+                margin-top: 10px;
+            }
+            
+            .project-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-details {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                Architecture Espace, Accoustique & Lumière
+                <span class="logo-subtitle">par Architecture Biocompatible</span>
+            </a>
+            <nav>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#about">À propos</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Projets</a></li>
+                    <li><a href="index.html#contact" class="btn btn-outline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <h1>Acoustique Habitat</h1>
+                <p>Solutions techniques pour le confort acoustique des bâtiments d'habitation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOS -->
+    <section class="project-info">
+        <div class="container">
+            <div class="project-details">
+                <div class="detail-item">
+                    <i class="fas fa-volume-up"></i>
+                    <h3>Bruits Aériens</h3>
+                    <p>Voix, télévision, chaîne hi-fi</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-volume-down"></i>
+                    <h3>Bruits Solidens</h3>
+                    <p>Pas, chocs, vibrations</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-road"></i>
+                    <h3>Bruits Extérieurs</h3>
+                    <p>Routiers, ferroviaires</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Réglementation</h3>
+                    <p>Arrêté du 30 mai 1996</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENU ACOUSTIQUE -->
+    <section class="acoustique-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solutions Acoustiques pour l'Habitat</h2>
+                <p>Expertise technique et réglementaire pour un confort acoustique optimal</p>
+            </div>
+
+            <!-- Généralités -->
+            <div class="acoustique-section">
+                <h2>Généralités</h2>
+                <p>L'acoustique est une science très ancienne depuis la Grèce Antique. L'acoustique science du son et des bruits a des applications dans l'industrie, l'environnement et le bâtiment.</p>
+                <p>Dans le bâtiment, nous abordons :</p>
+                <ul class="features-list">
+                    <li>L'acoustique intérieure avec les solutions adéquates</li>
+                    <li>L'acoustique extérieure (route, métro) et ses solutions</li>
+                    <li>Les bruits d'équipements (VMC, Ascenseur) et ses solutions</li>
+                </ul>
+            </div>
+
+            <!-- Acoustique intérieure -->
+            <div class="acoustique-section">
+                <h2>I – L'acoustique intérieure</h2>
+                
+                <h3>1- Les bruits aériens</h3>
+                <p>Les bruits aériens sont les voix parlées, la télévision, la chaine hi fi... Dans les immeubles haussmanniens, ces voix sont audibles mais pas perceptibles. Ces bruits sont gênants vis à vis du voisin. Il y a lieu de les traiter.</p>
+                
+                <div class="solution-technique">
+                    <h4>1-1- Solutions techniques acoustiques</h4>
+                    
+                    <h4>1-1-1- Voisins superposés</h4>
+                    <p>La solution faux plafond acoustique est très efficace pour l'isolement aux bruits aériens. Les sons ne sont plus audibles.</p>
+                    
+                    <h4>1-1-2- Voisins mitoyens</h4>
+                    <div class="schema">
+                        <p><strong>SCHEMA D'UNE CONTRE CLOISON ACOUSTIQUE</strong></p>
+                        <img src="images/SCHEMA_D'UNE_CONTRE_CLOISON_ACOUSTIQUE.png" alt="Schéma d'une contre cloison acoustique">
+                        <p>Le doublage d'un mur parpaing creux 200mm par une contre cloison acoustique est très performant. Le plaignant n'entend plus rien.</p>
+                    </div>
+                </div>
+
+                <h3>2- Les bruits solidiens</h3>
+                <div class="solution-technique">
+                    <p>Les bruits de pas des parents ou des enfants qui courent seront atténués par les plots PAD. Les voisins de la chambre en dessous dormiront sur leurs deux oreilles.</p>
+                    <div class="schema">
+                        <p><strong>SOLUTION ANTI-BRUITS SOLIDIENS</strong></p>
+                        <img src="images/SOLUTION_ANTI-BRUITS_SOLIDIENS.png" alt="Solution anti-bruits solidiens">
+                        <p>Utilisation de plots PAD, laine de roche et Fermacell renforcé</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acoustique extérieure -->
+            <div class="acoustique-section">
+                <h2>II- L'acoustique extérieure</h2>
+                <p>Les bruits aériens extérieurs sont respectivement :</p>
+                <ul class="features-list">
+                    <li>Les bruits routiers</li>
+                    <li>Les bruits ferroviaires</li>
+                </ul>
+
+                <div class="regulation-info">
+                    <h3>1- Rappel de la réglementation acoustique pour les bruits extérieurs</h3>
+                    <p>La réglementation acoustique s'applique suivant l'arrêté du 30 Mai 1996. Nous parlerons de la partie la plus pratique.</p>
+                    
+                    <h4>1-1 - Classement des infrastructures</h4>
+                    <p>Il existe 5 classes acoustiques d'infrastructures classées suivant le niveau sonore auquel elles sont soumises.</p>
+                </div>
+
+                <h3>2- Détermination de l'isolement acoustique minimal</h3>
+                <p>En application du décret n° 95-21 du 9 janvier 1995, les pièces principales et cuisines des logements dans les bâtiments d'habitation à construire dans le secteur de nuisance d'une ou plusieurs infrastructures de transports terrestres doivent présenter un isolement acoustique minimal contre les bruits extérieurs.</p>
+
+                <h4>2-1. Dans les rues en U</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Catégorie</th>
+                            <th>Isolement minimal DnAT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>45 dB (A)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>42 dB (A)</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>38 dB (A)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>35 dB (A)</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>30 dB (A)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>2-2. En tissu ouvert</h4>
+                <p>Le tableau suivant donne, par catégorie d'infrastructure, la valeur de l'isolement minimal des pièces en fonction de la distance entre le bâtiment à construire et l'infrastructure.</p>
+            </div>
+
+            <!-- Solutions techniques façades -->
+            <div class="acoustique-section">
+                <h2>3- Isolation acoustique des façades – solutions techniques</h2>
+                <p>Cas d'un logement ancien en béton (construit entre 1970 et 1996) : façade béton, fenêtre de dimension standard.</p>
+                
+                <h3>3-1- Tableau de calcul standard</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dn,A,tr (dB)</th>
+                            <th>RA,TR fenêtre (dB)</th>
+                            <th>Dn,e,vol roulant (dB)</th>
+                            <th>Dn,e (entrée d'air)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30</td>
+                            <td>30</td>
+                            <td>37</td>
+                            <td>37</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>35</td>
+                            <td>42</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>38</td>
+                            <td>45</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>42</td>
+                            <td>42</td>
+                            <td>49</td>
+                            <td>49</td>
+                        </tr>
+                        <tr>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>52</td>
+                            <td>52</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Vibrations du métro -->
+            <div class="acoustique-section">
+                <h2>4- Cas particulier : Vibrations du métro</h2>
+                
+                <h3>4-1- Généralités</h3>
+                <p>Les vibrations du métro constituent une grande gêne vis à vis bâtiments voisins (logement, hôtel, hôpitaux...). Un traitement efficace s'avère indispensable.</p>
+                
+                <h3>4-2- Solutions techniques antivibratoires</h3>
+                <p>La solution consiste à filtrer les vibrations par des résilients en polyuréthane de type Sylomer ou Sylodyn (Getzner) au niveau des fondations pour les immeubles neufs.</p>
+                
+                <div class="schema">
+                    <p><strong>COUPE D'UNE FONDATION BÉTON DÉSOLIDARISÉE PAR DU SYLODYN</strong></p>
+                    <img src="images/COUPE_D'UNE_FONDATION_BETON_DESOLIDARISEE_PAR_DU_SYLODYN.png" alt="Coupe d'une fondation béton désolidarisée par du Sylodyn">
+                    <p>Solution technique avec reprise en sous-œuvre et interposition du sylomer ou sylodyn</p>
+                </div>
+                
+                <p>Dans les immeubles anciens parisiens, l'enjeu est de taille pour les propriétaires d'immeuble subissant les vibrations du métro. Une moins value d'au moins 25 % sur le prix du mètre carré, la solution GETZNER efface la moins value et valorise immédiatement le bâtiment.</p>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="conclusion">
+                <h3>Conclusion générale</h3>
+                <p>Le bruit réel phénomène de société doit être traité dans sa globalité: acoustique extérieur (façade) et acoustique intérieure (bruit de voisinage). La solution globale apportera un véritable confort de vie aux occupants sans nuire à la santé des français. De plus la valeur ajoutée d'un bien immobilier neuf ou ancien dépend de la qualité acoustique de construction et de ses solutions antivibratoires lorsque le métro circule.</p>
+            </div>
+
+            <!-- Annexe -->
+            <div class="acoustique-section">
+                <h2>Annexe : Étude d'impact acoustique sur le voisinage</h2>
+                <p>L'étude d'impact s'intéresse aux bruits liés à la diffusion de musique sur son environnement proche. Elle permet d'une part de préserver la tranquillité des riverains, et d'autre part de protéger l'usager de l'établissement diffusant de la musique amplifiée. En fait, il s'agit de préserver l'environnement sonore du voisinage d'un bar, d'un club, d'un restaurant ou tout autre lieu musical. Les bruits de clientèle ne sont pas pris en compte dans l'étude d'impact.</p>
+                
+                <p>Cette étude d'impact est réalisée en plusieurs étapes :</p>
+                <ul class="features-list">
+                    <li>Mesure de l'isolement au bruit aérien entre l'établissement et les logements les plus exposés</li>
+                    <li>Mesure du niveau de bruit résiduel (évaluation du niveau de bruit lorsque l'établissement est fermé)</li>
+                    <li>Mesure du niveau sonore dans l'établissement avec la sonorisation en fonctionnement</li>
+                </ul>
+                
+                <p>Ces mesures acoustiques vont permettre de définir les niveaux sonores maximums que peut diffuser l'établissement. En fonction de ces niveaux, l'installation d'un limiteur de niveau sonore devra ou non être obligatoire. L'objectif étant la protection du voisinage de la diffusion de musique amplifiée.</p>
+                
+                <p>L'étude d'impact acoustique est obligatoire et sera réalisée par un ingénieur acousticien.</p>
+                
+                <div class="regulation-info">
+                    <h3>TEXTES RÉGLEMENTAIRES</h3>
+                    <ul class="features-list">
+                        <li>Le décret du 15 décembre 1998 relatif aux établissements diffusant à titre habituel de la musique amplifiée</li>
+                        <li>Le décret du 07 août 2017 relatif à la prévention des risques liés aux bruits et aux sons amplifiés</li>
+                        <li>Le décret du 31 aout 2006 relatif aux bruits de voisinage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="project-cta">
+        <div class="container">
+            <h2>Besoin d'une expertise acoustique ?</h2>
+            <p>Notre équipe d'experts peut vous accompagner dans vos projets d'isolation acoustique</p>
+            <a href="index.html#contact" class="btn" style="margin-top: 30px;">Contactez-nous</a>
+        </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <script>
+        // Navigation mobile
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animations
+        const revealElements = document.querySelectorAll('.detail-item, .acoustique-section, .solution-technique');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        revealElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+    </script>
+</body>
+</html>

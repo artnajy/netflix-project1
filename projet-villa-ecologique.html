@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Villa écologique biocompatible - Architecture Espace, Acoustique & Lumière">
+    <title>Villa Écologique | Architecture Espace, Acoustique & Lumière</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8a6d3b;
+            --accent-color: #a8c6b8;
+            --light-color: #f8f9f7;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+            padding-top: 80px;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .btn:hover {
+            background-color: #6b5630;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo-subtitle {
+            display: block;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--secondary-color);
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin-left: 40px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* STYLES PROJET */
+        .project-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/nice1.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: -80px;
+            padding-top: 80px;
+        }
+        
+        .project-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .project-hero-content p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .project-info {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .project-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .detail-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        .detail-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .detail-item h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .project-description {
+            padding: 100px 0;
+        }
+        
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .project-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        .project-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .features-list {
+            margin: 30px 0;
+        }
+        
+        .features-list h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .project-gallery {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            background: #f8f9fa;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-caption p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .project-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+            color: white;
+        }
+        
+        .project-cta h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+                line-height: 1.2;
+            }
+            
+            .logo-subtitle {
+                font-size: 0.65rem;
+                margin-top: 2px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 20px 0;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu a.btn-outline {
+                border: 2px solid var(--secondary-color);
+                text-align: center;
+                padding: 12px;
+                margin-top: 10px;
+            }
+            
+            .project-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-details {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                Architecture Espace, Acoustique & Lumière
+                <span class="logo-subtitle">par Architecture Biocompatible</span>
+            </a>
+            <nav>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#about">À propos</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Projets</a></li>
+                    <li><a href="index.html#contact" class="btn btn-outline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <h1>Villa Écologique</h1>
+                <p>Maison passive en bois et terre cuite à Nice</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOS -->
+    <section class="project-info">
+        <div class="container">
+            <div class="project-details">
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Localisation</h3>
+                    <p>Nice, Côte d'Azur</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Année</h3>
+                    <p>2023</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-home"></i>
+                    <h3>Type</h3>
+                    <p>Villa individuelle</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Approche</h3>
+                    <p>Architecture Biocompatible</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Surface</h3>
+                    <p>180 m² habitable</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-sun"></i>
+                    <h3>Orientation</h3>
+                    <p>Optimisation solaire passive</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESCRIPTION -->
+    <section class="project-description">
+        <div class="container">
+            <div class="project-content">
+                <div class="project-text">
+                    <h2>Une villa en harmonie avec son environnement</h2>
+                    <p>Cette villa écologique située à Nice incarne l'excellence de l'architecture biocompatible méditerranéenne. Conçue pour s'intégrer parfaitement dans son environnement naturel, elle allie esthétique contemporaine et principes de construction durable.</p>
+                    <p>La maison utilise exclusivement des matériaux naturels comme le bois certifié, la terre cuite locale et la pierre des Alpes-Maritimes. L'orientation optimisée maximise les apports solaires passifs tout en offrant une protection naturelle contre la chaleur estivale.</p>
+                    
+                    <div class="features-list">
+                        <h3>Innovations écologiques :</h3>
+                        <ul>
+                            <li>Structure en bois massif certifié PEFC</li>
+                            <li>Isolation en liège et fibre de bois</li>
+                            <li>Ventilation naturelle traversante</li>
+                            <li>Récupération des eaux de pluie pour l'arrosage</li>
+                            <li>Toiture végétalisée et brise-soleil naturels</li>
+                            <li>Chauffage solaire passif et poêle à granulés</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-image">
+                    <img src="images/nice2.png" alt="Villa écologique intégrée dans la nature">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section class="project-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galerie du projet</h2>
+                <p>Découvrez les espaces de vie et les détails architecturaux de cette villa écologique</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/nice1.png" alt="Façade sud avec brise-soleil">
+                    <div class="gallery-caption">
+                        <h4>Façade Sud</h4>
+                        <p>Orientation optimale avec protection solaire naturelle</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/nice2.png" alt="Salon ouvert sur le jardin">
+                    <div class="gallery-caption">
+                        <h4>Salon ouvert</h4>
+                        <p>Espace lumineux avec vue sur le jardin méditerranéen</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/nice3.png" alt="Cuisine équipée en bois naturel">
+                    <div class="gallery-caption">
+                        <h4>Cuisine écologique</h4>
+                        <p>Matériaux naturels et équipements économes en énergie</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/nice4.png" alt="Chambre parentale paisible">
+                    <div class="gallery-caption">
+                        <h4>Chambre parentale</h4>
+                        <p>Espace de repos paisible avec ventilation naturelle</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/nice5.png" alt="Salle de bain avec matériaux naturels">
+                    <div class="gallery-caption">
+                        <h4>Salle de bain</h4>
+                        <p>Carrelage terre cuite et bois naturel</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/nice6.png" alt="Terrasse et jardin méditerranéen">
+                    <div class="gallery-caption">
+                        <h4>Terrasse extérieure</h4>
+                        <p>Espace de détente intégré au paysage naturel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="project-cta">
+        <div class="container">
+            <h2>Rêvez-vous d'une villa écologique ?</h2>
+            <p>Notre expertise en architecture biocompatible peut concrétiser votre projet de maison saine et durable</p>
+            <a href="index.html#contact" class="btn" style="margin-top: 30px;">Discutons de votre vision</a>
+        </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <script>
+        // Navigation mobile
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animations
+        const revealElements = document.querySelectorAll('.detail-item, .project-content, .gallery-item');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        revealElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+    </script>
+</body>
+</html>
