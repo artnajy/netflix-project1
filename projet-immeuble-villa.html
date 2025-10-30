@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Immeuble-villa - Architecture Espace, Acoustique & Lumière">
+    <title>Immeuble-Villa | Architecture Espace, Acoustique & Lumière</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8a6d3b;
+            --accent-color: #a8c6b8;
+            --light-color: #f8f9f7;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            padding-top: 80px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #000000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .btn:hover {
+            background-color: #6b5630;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        /* HEADER CORRIGÉ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo-subtitle {
+            display: block;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--secondary-color);
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .nav-menu li {
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+            font-size: 15px;
+            color: #000000; /* Couleur noire pour les liens */
+            text-decoration: none;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: #000000; /* Reste noir au survol */
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu a.btn-outline {
+            padding: 10px 25px;
+            border-radius: 4px;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .nav-menu a.btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Bannière */
+        .banner {
+            height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('immeuble-villa7.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-content {
+            z-index: 2;
+            position: relative;
+            color: white;
+        }
+        
+        .banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: white;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+            color: white;
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 80px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #000000;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #2c5530;
+        }
+        
+        .section-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+        }
+        
+        /* Contenu texte-image */
+        .text-image {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+            gap: 40px;
+        }
+        
+        .text-image.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .text-content {
+            flex: 1;
+        }
+        
+        .image-content {
+            flex: 1;
+        }
+        
+        .image-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            color: #000000;
+        }
+        
+        strong {
+            color: #000000;
+        }
+        
+        /* TABLEAUX ADAPTÉS POUR MOBILE */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 30px 0;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #000000;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        th {
+            background-color: #2c5530;
+            color: white;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* Styles spécifiques pour mobile */
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+            
+            /* Réduction supplémentaire pour les tableaux très larges */
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 6px;
+                font-size: 11px;
+            }
+        }
+        
+        /* Grille d'images */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .grid-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .grid-item-content {
+            padding: 15px;
+        }
+        
+        .grid-item h4 {
+            color: #000000;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .grid-item p {
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        /* Section CTA */
+        .cta-section {
+            background-color: #2c5530;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #2c5530;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Raleway', sans-serif;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: white;
+        }
+        
+        /* Pied de page */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            margin-right: 30px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE - CORRECTIONS IMPORTANTES */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            header {
+                padding: 12px 0;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+                line-height: 1.2;
+            }
+            
+            .logo-subtitle {
+                font-size: 0.65rem;
+                margin-top: 2px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 20px 0;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                color: #000000;
+                width: 100%;
+            }
+            
+            .nav-menu a.btn-outline {
+                border: 2px solid var(--secondary-color);
+                text-align: center;
+                padding: 12px;
+                margin-top: 10px;
+                color: var(--secondary-color);
+            }
+            
+            .text-image, .text-image.reverse {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner {
+                height: 300px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            /* CORRECTION DES TABLEAUX SUR MOBILE */
+            .table-container {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border: 1px solid #ddd;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            table {
+                width: auto;
+                min-width: 100%;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+            
+            /* Ajustements pour les petits écrans */
+            @media (max-width: 480px) {
+                th, td {
+                    padding: 8px 6px;
+                    font-size: 11px;
+                }
+                
+                .table-container {
+                    margin-left: -10px;
+                    margin-right: -10px;
+                    width: calc(100% + 20px);
+                }
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER CORRIGÉ -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                Architecture Espace, Acoustique & Lumière
+                <span class="logo-subtitle">par Architecture Biocompatible</span>
+            </a>
+            <nav>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#about">À propos</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Projets</a></li>
+                    <li><a href="index.html#contact" class="btn-outline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bannière -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Immeuble-Villa</h1>
+                <p>Concilier le confort de la maison individuelle avec l'efficacité du logement collectif</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <main class="container">
+        <!-- Introduction -->
+        <section>
+            <div class="section-header">
+                <h2>Concept Général</h2>
+                <p>L'immeuble-villa propose une nouvelle typologie d'habitat, à la croisée de la maison individuelle et du logement collectif.</p>
+            </div>
+            
+            <div class="text-image">
+                <div class="text-content">
+                    <h3>Un habitat intermédiaire à échelle humaine</h3>
+                    <p>L'immeuble-villa vise à concilier <strong>le confort, l'intimité et la liberté de la maison individuelle</strong> avec <strong>l'efficacité, la cohérence et la durabilité du logement collectif</strong>.</p>
+                    <p>C'est une typologie qui cherche à <strong>repenser la densité urbaine</strong>, en créant un habitat à taille humaine, riche en espaces extérieurs privatifs mais organisé selon une logique partagée.</p>
+                    <p>Chaque logement est conçu comme une <strong>"villa empilée"</strong>, disposant de sa propre identité spatiale, de <strong>volumes traversants</strong> et d'un <strong>espace extérieur généreux</strong> (terrasse, jardin suspendu, loggia).</p>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa8.png" alt="Concept d'immeuble-villa avec terrasses végétalisées">
+                </div>
+            </div>
+        </section>
+
+        <!-- Principes fondamentaux -->
+        <section>
+            <div class="section-header">
+                <h2>Principes Fondamentaux</h2>
+                <p>Les éléments clés qui définissent l'approche immeuble-villa</p>
+            </div>
+            
+            <div class="text-image reverse">
+                <div class="text-content">
+                    <h3>Superposition de maisons</h3>
+                    <p>L'immeuble devient une <strong>collection de maisons verticales</strong>, chacune avec son indépendance fonctionnelle mais intégrée dans un ensemble harmonieux.</p>
+                    <p>Chaque appartement est conçu comme une <strong>villa individuelle empilée</strong>, offrant intimité, lumière et ouverture sur la nature.</p>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa-coupe.png" alt="Superposition de maisons dans un immeuble-villa">
+                </div>
+            </div>
+            
+            <div class="text-image">
+                <div class="text-content">
+                    <h3>Mutualisation intelligente</h3>
+                    <p>Les <strong>équipements collectifs</strong> (piscine, stationnement, local vélos, panneaux solaires, etc.) sont <strong>partagés</strong>, réduisant ainsi les coûts individuels et l'empreinte environnementale.</p>
+                    <p>Cette approche permet d'offrir des services "haut de gamme" accessibles grâce à une <strong>économie d'échelle</strong>.</p>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa7.png" alt="Espaces communs mutualisés dans un immeuble-villa">
+                </div>
+            </div>
+            
+            <div class="text-image reverse">
+                <div class="text-content">
+                    <h3>Espaces de convivialité</h3>
+                    <p>Des <strong>espaces intermédiaires</strong> (hall-jardin, cour commune, terrasse partagée, atelier ou salle commune) encouragent les <strong>rencontres et la vie de voisinage</strong> sans imposer la promiscuité.</p>
+                    <p>Ces lieux peuvent aussi servir de <strong>tampons thermiques et acoustiques</strong>, améliorant le confort général.</p>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa9.png" alt="Espaces de convivialité dans un immeuble-villa">
+                </div>
+            </div>
+        </section>
+
+        <!-- Synthèse des avantages -->
+        <section>
+            <div class="section-header">
+                <h2>Synthèse des Deux Mondes</h2>
+                <p>L'immeuble-villa réunit les avantages de la maison individuelle et du logement collectif</p>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Objectif</th>
+                            <th>Solution apportée par l'immeuble-villa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Confort individuel</strong></td>
+                            <td>Duplex, terrasse, jardin suspendu, double orientation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Maîtrise des coûts</strong></td>
+                            <td>Mutualisation des réseaux et équipements</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vie sociale choisie</strong></td>
+                            <td>Espaces partagés non contraignants</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Performance énergétique</strong></td>
+                            <td>Isolation renforcée, équipements collectifs optimisés</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Qualité architecturale</strong></td>
+                            <td>Volumes épurés, matériaux durables, insertion paysagère</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lien au sol réinventé</strong></td>
+                            <td>Jardins suspendus et terrasses végétalisées</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-image">
+                <div class="text-content">
+                    <h3>Comparaison des typologies d'habitat</h3>
+                    <div class="table-container">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Aspect</th>
+                                    <th>Maison individuelle</th>
+                                    <th>Logement collectif</th>
+                                    <th>Immeuble-villa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Intimité</strong></td>
+                                    <td>Totale</td>
+                                    <td>Limitée</td>
+                                    <td>Préservée</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Espaces extérieurs</strong></td>
+                                    <td>Jardin personnel</td>
+                                    <td>Balcon réduit</td>
+                                    <td>Terrasse-jardin</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Coûts et gestion</strong></td>
+                                    <td>Élevés et isolés</td>
+                                    <td>Mutualisés</td>
+                                    <td>Mutualisation équilibrée</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Vie sociale</strong></td>
+                                    <td>Isolement</td>
+                                    <td>Promiscuité</td>
+                                    <td>Convivialité choisie</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Écologie</strong></td>
+                                    <td>Forte consommation</td>
+                                    <td>Bonne performance</td>
+                                    <td>Haute performance</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Architecture</strong></td>
+                                    <td>Libre mais dispersée</td>
+                                    <td>Compacte mais rigide</td>
+                                    <td>Densité douce</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa14.png" alt="Comparaison des différentes typologies d'habitat">
+                </div>
+            </div>
+        </section>
+
+        <!-- Organisation spatiale -->
+        <section>
+            <div class="section-header">
+                <h2>Organisation Spatiale et Structure</h2>
+                <p>Une conception pensée pour l'expérience résidentielle</p>
+            </div>
+            
+            <div class="text-image reverse">
+                <div class="text-content">
+                    <h3>Structure en strates superposées</h3>
+                    <p>L'immeuble se compose de <strong>trois grandes strates superposées</strong>, chacune regroupant deux niveaux de duplex. Les circulations verticales — escaliers et ascenseurs — sont logées dans des noyaux en retrait, permettant à chaque logement de bénéficier d'une façade dégagée et d'une orientation traversante.</p>
+                    <p>Les volumes s'emboîtent de manière rythmée, créant des jeux d'ombres et de lumière typiques de l'architecture méditerranéenne : balcons en retrait, corniches fines, volets ajourés, garde-corps en ferronnerie simple.</p>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa13.png" alt="Structure en strates superposées d'un immeuble-villa">
+                </div>
+            </div>
+            
+            <div class="text-image">
+                <div class="text-content">
+                    <h3>Terrasses-jardins décalées</h3>
+                    <p>Les <strong>terrasses-jardins</strong> sont décalées d'un niveau à l'autre, formant une succession de plateaux verts qui donnent l'impression que la végétation coule le long de la façade.</p>
+                    <p>À la nuit tombée, les éclairages intégrés soulignent les lignes épurées du bâtiment et mettent en valeur les ombres des plantes sur les murs blancs.</p>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa10.png" alt="Terrasses-jardins décalées dans un immeuble-villa">
+                </div>
+            </div>
+        </section>
+
+        <!-- Typologies d'immeubles-villas -->
+        <section>
+            <div class="section-header">
+                <h2>Les 6 Grandes Familles d'Immeubles-Villas</h2>
+                <p>Différentes approches pour adapter le concept à divers contextes</p>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Forme générale</th>
+                            <th>Atout principal</th>
+                            <th>Adaptation idéale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>En gradins</strong></td>
+                            <td>Volumes en retrait</td>
+                            <td>Jardins suspendus</td>
+                            <td>Terrain en pente</td>
+                        </tr>
+                        <tr>
+                            <td><strong>En plots</strong></td>
+                            <td>Pavillons regroupés</td>
+                            <td>Échelle domestique</td>
+                            <td>Quartier résidentiel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>En pont</strong></td>
+                            <td>Socle + volumes</td>
+                            <td>Espaces libres</td>
+                            <td>Site contraint</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Linéaire</strong></td>
+                            <td>Bande horizontale</td>
+                            <td>Rationalité</td>
+                            <td>Tissu urbain dense</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Paysage</strong></td>
+                            <td>Forme organique</td>
+                            <td>Fusion nature</td>
+                            <td>Requalification verte</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vertical</strong></td>
+                            <td>Tour habitée</td>
+                            <td>Densité maximale</td>
+                            <td>Centre-ville</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="image-grid">
+                <div class="grid-item">
+                    <img src="immeuble-villa11.png" alt="Immeuble-villa en gradins">
+                    <div class="grid-item-content">
+                        <h4>En gradins</h4>
+                        <p>Terrasses successives pour jardins suspendus</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="immeuble-villa12.png" alt="Immeuble-villa en plots">
+                    <div class="grid-item-content">
+                        <h4>En plots</h4>
+                        <p>Pavillons regroupés pour une échelle domestique</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="immeuble-villa8.png" alt="Immeuble-villa en pont">
+                    <div class="grid-item-content">
+                        <h4>En pont</h4>
+                        <p>Volumes flottants libérant l'espace au sol</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Principes techniques -->
+        <section>
+            <div class="section-header">
+                <h2>Principes Techniques et Écologiques</h2>
+                <p>Une approche durable et performante</p>
+            </div>
+            
+            <div class="text-image">
+                <div class="text-content">
+                    <h3>Structure et matériaux</h3>
+                    <ul>
+                        <li>Système porteur mixte béton/acier, permettant une <strong>grande flexibilité d'aménagement</strong></li>
+                        <li>Façades en <strong>enduit clair minéral</strong>, menuiseries bois ou aluminium naturel</li>
+                        <li>Terrasses végétalisées avec <strong>substrat léger et végétation méditerranéenne</strong> (oliviers, lavandes, lauriers, graminées)</li>
+                    </ul>
+                    
+                    <h3>Performance énergétique</h3>
+                    <ul>
+                        <li>Mutualisation des installations techniques : <strong>chauffage et climatisation centralisés</strong></li>
+                        <li><strong>Panneaux solaires photovoltaïques</strong> en toiture</li>
+                        <li><strong>Récupération d'eaux pluviales</strong> pour l'arrosage des terrasses</li>
+                        <li>Isolation renforcée par des <strong>espaces tampons</strong> (locaux communs, parkings semi-enterrés)</li>
+                        <li>Suppression du sous-sol → réduction du coût global et de l'impact environnemental</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="immeuble-villa11.png" alt="Principes techniques et écologiques de l'immeuble-villa">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Un projet d'immeuble villa ?</h2>
+                <p>Notre expertise en architecture biocompatible et acoustique peut optimiser votre programme immobilier.</p>
+               <a href="index.html#contact" class="btn" style="margin-top: 30px;">Créons votre projet ensemble</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2023 Architecture Espace, Sons & Lumière. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation mobile
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animations
+        const revealElements = document.querySelectorAll('.text-image, .image-grid, .table-container');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        revealElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+    </script>
+</body>
+</html>
